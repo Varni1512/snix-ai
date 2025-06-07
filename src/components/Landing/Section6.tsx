@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { Sparkles, Zap, Palette, ArrowRight, Play, Star } from "lucide-react";
+import { Sparkles, Zap, Palette, ArrowRight,Star } from "lucide-react";
 
 const RefinedAISection = () => {
   const containerRef = useRef(null);
