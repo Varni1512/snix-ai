@@ -48,8 +48,8 @@ const Navbar = ({ currentPage, onNavigate }) => {
     },
     {
       name: "Contact Us",
-      link: "#contact",
-      isPage: false // This is a section link
+      link: "contact",
+      isPage: true // This is a section link
     },
   ];
 

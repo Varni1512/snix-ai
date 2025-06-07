@@ -19,6 +19,7 @@ import LifeLikeAIModels from "./components/Landing/BottomGallery";
 import ProductPage from "./components/product/product.tsx"; 
 import AIShootPage from "./components/AIShoot/AiShoot.tsx"; 
 import AIStudioSection from "./components/Landing/Section.tsx";
+import ContactUs from "./components/contact/contact.tsx";
 
 
 // Loading Page Component
@@ -367,7 +368,7 @@ const App = () => {
           {currentPage === 'home' && <HomePage />}
           {currentPage === 'product' && <ProductPage />}
           {currentPage === 'ai-shoot' && <AIShootPage />}
-          
+          {currentPage === 'contact' && <ContactUs />}
           <FooterSection />
         </motion.div>
       )}

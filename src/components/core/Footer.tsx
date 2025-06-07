@@ -1,13 +1,13 @@
 import  { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import XIcon from "../icons/XIcon";
 import {
   Mail,
   Phone,
   MapPin,
-  Twitter,
   Instagram,
   Linkedin,
-  Github,
+  Facebook,
   Heart,
   ArrowUpRight,
 } from "lucide-react";
@@ -51,11 +51,11 @@ const FooterSection = () => {
   };
 
   const socialLinks = [
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Github, href: "#", label: "GitHub" },
-  ];
+  { icon: XIcon, href: "#", label: "X" },
+  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Facebook, href: "#", label: "Facebook" },
+];
 
   return (
     <footer
