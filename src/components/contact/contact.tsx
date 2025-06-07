@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { FormEvent } from 'react';
-import { Instagram, Facebook, Linkedin, Send, Mail, MapPin, Phone, Sparkles, Star, MessageCircle, Zap, Heart, ArrowRight } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, Send, Mail, MapPin, Phone, Sparkles, MessageCircle, Zap, Heart, ArrowRight } from 'lucide-react';
 
 const ContactUs: React.FC = () => {
     const [form, setForm] = useState({
@@ -19,7 +19,6 @@ const ContactUs: React.FC = () => {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number; size: number; color: string }>>([]);
     const [isVisible, setIsVisible] = useState(false);
     const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -42,14 +41,6 @@ const ContactUs: React.FC = () => {
         setTimeout(() => setIsVisible(true), 100);
     }, []);
 
-    // Advanced mouse tracking with magnetic effect
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePos({ x: e.clientX, y: e.clientY });
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
