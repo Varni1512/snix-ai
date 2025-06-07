@@ -13,56 +13,29 @@ const Navbar = ({ currentPage, onNavigate }) => {
     target: ref,
     offset: ["start start", "end start"],
   });
+
   const [visible, setVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hovered, setHovered] = useState(null);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 100) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
+    setVisible(latest > 100);
   });
 
   const navItems = [
-    {
-      name: "Home",
-      link: "home",
-      isPage: true // Indicates this is a page navigation
-    },
-    {
-      name: "Product",
-      link: "product",
-      isPage: true // This will navigate to your product.jsx page
-    },
-    {
-      name: "AI Shoot",
-      link: "ai-shoot",
-      isPage: true // This is a section link
-    },
-    {
-      name: "Blogs",
-      link: "#blogs",
-      isPage: false // This is a section link
-    },
-    {
-      name: "Contact Us",
-      link: "contact",
-      isPage: true // This is a section link
-    },
+    { name: "Home", link: "home", isPage: true },
+    { name: "Product", link: "product", isPage: true },
+    { name: "AI Shoot", link: "ai-shoot", isPage: true },
+    { name: "Blogs", link: "#blogs", isPage: false },
+    { name: "Contact Us", link: "contact", isPage: true },
   ];
 
-  // Handle navigation clicks
   const handleNavClick = (item, e) => {
     if (item.isPage) {
       e.preventDefault();
-      onNavigate(item.link); // Navigate to page
-      setIsMobileMenuOpen(false); // Close mobile menu if open
-    } else {
-      // For section links, let the default behavior handle scrolling
-      setIsMobileMenuOpen(false);
+      onNavigate(item.link);
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -86,21 +59,19 @@ const Navbar = ({ currentPage, onNavigate }) => {
           style={{
             minWidth: "800px",
           }}
-          className={`relative z-60 mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-6 py-3 lg:flex ${visible ? "bg-white/95 shadow-lg" : "bg-transparent"
-            }`}
+          className={`relative z-60 mx-auto hidden max-w-7xl items-center justify-between rounded-full px-6 py-3 lg:flex ${visible ? "bg-white/95 shadow-lg" : "bg-transparent"}`}
         >
           {/* Logo */}
           <div
             className="flex items-center space-x-2 cursor-pointer"
-            onClick={() => onNavigate('home')}
+            onClick={() => onNavigate("home")}
           >
             <img
               src={visible ? "/logo.png" : "/logo1.png"}
               alt="Logo"
-              className={`object-contain transition-all duration-300 ${visible ? "h-16 w-16" : "h-38 w-38"}`}
+              className={`object-contain transition-all duration-300 ${visible ? "h-16 w-16" : "h-16 w-38"}`}
             />
           </div>
-
 
           {/* Navigation Items */}
           <motion.div
@@ -113,10 +84,11 @@ const Navbar = ({ currentPage, onNavigate }) => {
                 href={item.isPage ? "#" : item.link}
                 onClick={(e) => handleNavClick(item, e)}
                 onMouseEnter={() => setHovered(idx)}
-                className={`relative px-4 py-2 transition-colors ${currentPage === item.link && item.isPage
-                    ? 'text-purple-600 font-semibold'
-                    : 'text-gray-600 hover:text-gray-900'
-                  }`}
+                className={`relative px-4 py-2 transition-colors ${
+                  currentPage === item.link && item.isPage
+                    ? "text-purple-600 font-semibold"
+                    : "text-gray-600 hover:text-gray-900"
+                }`}
               >
                 {hovered === idx && (
                   <motion.div
@@ -135,7 +107,7 @@ const Navbar = ({ currentPage, onNavigate }) => {
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <div className="flex items-center gap-3">
             <button className="rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-2 text-sm font-medium text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl">
               Book a Demo
@@ -161,16 +133,14 @@ const Navbar = ({ currentPage, onNavigate }) => {
             stiffness: 200,
             damping: 50,
           }}
-          className={`relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-4 py-3 lg:hidden ${visible ? "bg-white/95 shadow-lg" : "bg-transparent"
-            }`}
+          className={`relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-4 py-3 lg:hidden ${visible ? "bg-white/95 shadow-lg" : "bg-transparent"}`}
         >
           {/* Mobile Header */}
           <div className="flex w-full items-center justify-between">
-            {/* Logo */}
             <div
               className="flex items-center space-x-2 cursor-pointer"
               onClick={() => {
-                onNavigate('home');
+                onNavigate("home");
                 setIsMobileMenuOpen(false);
               }}
             >
@@ -209,10 +179,11 @@ const Navbar = ({ currentPage, onNavigate }) => {
                       key={`mobile-link-${idx}`}
                       href={item.isPage ? "#" : item.link}
                       onClick={(e) => handleNavClick(item, e)}
-                      className={`block py-2 transition-colors ${currentPage === item.link && item.isPage
-                          ? 'text-purple-600 font-semibold bg-purple-50 px-3 rounded-lg'
-                          : 'text-gray-600 hover:text-gray-900 px-3'
-                        }`}
+                      className={`block py-2 transition-colors ${
+                        currentPage === item.link && item.isPage
+                          ? "text-purple-600 font-semibold bg-purple-50 px-3 rounded-lg"
+                          : "text-gray-600 hover:text-gray-900 px-3"
+                      }`}
                     >
                       {item.name}
                     </a>
