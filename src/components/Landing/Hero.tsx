@@ -42,7 +42,6 @@ export default function ExactHeroCarousel() {
       {/* Content container */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 max-w-7xl w-full px-8 items-center mt-15 md:mt-0">
         {/* Left side - Text content */}
-        {/* Left side - Text content */}
         <div className="flex flex-col justify-center text-center lg:text-left">
           <div className={`transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <div className="text-purple-600 font-semibold mb-2 sm:mb-4 text-sm sm:text-base">CREATIVE STUDIO</div>
@@ -71,26 +70,31 @@ export default function ExactHeroCarousel() {
         {/* Right side - Image Carousel */}
         <div className="flex items-center justify-center relative h-96 lg:h-[600px]">
           <div className="relative w-full h-full flex items-center justify-center">
-            {/* Background images */}
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-12 -left-5 w-35 h-96 rounded-2xl overflow-hidden opacity-70 transition-all duration-700">
+            
+            {/* Left background image - positioned relative to center */}
+            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 lg:-translate-x-8 z-0">
+              <div className="w-28 sm:w-32 lg:w-36 h-80 sm:h-96 lg:h-[450px] rounded-2xl overflow-hidden opacity-60 transition-all duration-700 transform rotate-3 ">
                 <img
                   src={images[(currentImageIndex + 2) % images.length]}
                   alt="Background person"
-                  className="w-full h-full object-cover object-center transition-transform duration-700"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
               </div>
-              <div className="absolute top-20 -right-7 w-35 h-96 rounded-2xl overflow-hidden opacity-70 transition-all duration-700">
+            </div>
+
+            {/* Right background image - positioned relative to center */}
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 lg:translate-x-8 z-0">
+              <div className="w-28 sm:w-32 lg:w-36 h-80 sm:h-96 lg:h-[450px] rounded-2xl overflow-hidden opacity-60 transition-all duration-700 transform -rotate-3 ">
                 <img
                   src={images[(currentImageIndex + 4) % images.length]}
                   alt="Background person"
-                  className="w-full h-full object-cover object-center transition-transform duration-700"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
               </div>
             </div>
 
             {/* Main center image */}
-            <div className="relative z-10 w-50 h-[500px] rounded-3xl overflow-hidden transition-transform duration-300 hover:-translate-y-3 hover:scale-105">
+            <div className="relative z-10 w-40 sm:w-48 lg:w-56 h-80 sm:h-96 lg:h-[500px] rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-3 ">
               <img
                 src={images[currentImageIndex]}
                 alt="Featured person"
@@ -99,14 +103,15 @@ export default function ExactHeroCarousel() {
             </div>
 
             {/* Carousel indicators */}
-            <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 flex gap-3 z-20">
+            <div className="absolute -bottom-8 lg:-bottom-10 left-1/2 transform -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
               {images.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${currentImageIndex === index
-                    ? "bg-gradient-to-r from-purple-600 to-pink-600 scale-125 shadow-lg shadow-purple-500/50"
-                    : "bg-purple-600/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:scale-110"
-                    }`}
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${
+                    currentImageIndex === index
+                      ? "bg-gradient-to-r from-purple-600 to-pink-600 scale-125 shadow-lg shadow-purple-500/50"
+                      : "bg-purple-600/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:scale-110"
+                  }`}
                   onClick={() => setCurrentImageIndex(index)}
                   aria-label={`Go to image ${index + 1}`}
                 />
