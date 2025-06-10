@@ -9,9 +9,16 @@ export default function ExactHeroCarousel() {
     "/slideshow/16.png",
     "/slideshow/20.png",
     "/slideshow/25.png",
-    "/slideshow/16.png",
-    "/slideshow/20.png",
+    "/slideshow/15.png",
+    "/slideshow/17.png",
+    "/slideshow/18.png",
+    "/slideshow/19.png",
+    "/slideshow/21.png",
+    "/slideshow/22.png",
+    "/slideshow/23.png",
+    "/slideshow/24.png",
     "/slideshow/25.png",
+    "/slideshow/26.png",
   ];
 
   useEffect(() => {
@@ -31,29 +38,30 @@ export default function ExactHeroCarousel() {
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-50 via-white to-purple-50">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10 animate-pulse"></div>
-      
+
       {/* Content container */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 max-w-7xl w-full px-8 items-center mt-15 md:mt-0">
         {/* Left side - Text content */}
-        <div className="flex flex-col justify-center">
+        {/* Left side - Text content */}
+        <div className="flex flex-col justify-center text-center lg:text-left">
           <div className={`transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            <div className="text-purple-600 font-semibold mb-4">CREATIVE STUDIO</div>
-            <h1 className="font-extrabold text-5xl lg:text-6xl leading-tight text-gray-900 mb-8">
+            <div className="text-purple-600 font-semibold mb-2 sm:mb-4 text-sm sm:text-base">CREATIVE STUDIO</div>
+            <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-gray-900 mb-4 sm:mb-6 md:mb-8">
               Crafting Digital
               <br />
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Experiences
               </span>
             </h1>
-            <p className="text-lg leading-relaxed text-gray-600 mb-12 max-w-lg">
+            <p className="text-base sm:text-lg leading-relaxed text-gray-600 mb-8 sm:mb-10 md:mb-12 max-w-lg mx-auto lg:mx-0 px-4 sm:px-0">
               We blend innovative design with cutting-edge technology to create
               memorable digital experiences that captivate and inspire.
             </p>
-            <div className="flex gap-5 flex-wrap justify-center lg:justify-start">
-              <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1">
+            <div className="flex gap-3 sm:gap-4 md:gap-5 flex-wrap justify-center lg:justify-start">
+              <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1 text-sm sm:text-base">
                 Book Demo
               </button>
-              <button className="bg-transparent text-purple-600 font-semibold px-10 py-4 rounded-full border-2 border-purple-600 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:text-white hover:-translate-y-1">
+              <button className="bg-transparent text-purple-600 font-semibold px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full border-2 border-purple-600 transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:text-white hover:-translate-y-1 text-sm sm:text-base">
                 View Work
               </button>
             </div>
@@ -83,8 +91,8 @@ export default function ExactHeroCarousel() {
 
             {/* Main center image */}
             <div className="relative z-10 w-50 h-[500px] rounded-3xl overflow-hidden transition-transform duration-300 hover:-translate-y-3 hover:scale-105">
-              <img 
-                src={images[currentImageIndex]} 
+              <img
+                src={images[currentImageIndex]}
                 alt="Featured person"
                 className="w-full h-full object-cover object-center transition-transform duration-700"
               />
@@ -95,11 +103,10 @@ export default function ExactHeroCarousel() {
               {images.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${
-                    currentImageIndex === index
-                      ? "bg-gradient-to-r from-purple-600 to-pink-600 scale-125 shadow-lg shadow-purple-500/50"
-                      : "bg-purple-600/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:scale-110"
-                  }`}
+                  className={`w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${currentImageIndex === index
+                    ? "bg-gradient-to-r from-purple-600 to-pink-600 scale-125 shadow-lg shadow-purple-500/50"
+                    : "bg-purple-600/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 hover:scale-110"
+                    }`}
                   onClick={() => setCurrentImageIndex(index)}
                   aria-label={`Go to image ${index + 1}`}
                 />
